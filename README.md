@@ -122,6 +122,8 @@ Challenges and solutions
 
   ##### 2. Before editing, pull latest changes:
 
+  cd E-CommerceProject
+
   git pull origin main
   
   ##### 3. Make edits, then:
