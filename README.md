@@ -125,10 +125,15 @@ Challenges and solutions
   git pull origin main
   
   ##### 3. Make edits, then:
+  
   git checkout -b yourname
+  
   //work on your feature
+  
   git add .
+  
   git commit -m "Added Feature Name"
+  
   git push origin yourname
 
   
