@@ -4,9 +4,9 @@ E-CommerceProject is a React (Vite) based web app that simulates an online store
 🛒 E-CommerceProject (React + Vite)
 📌 Team Information
 
-Leader: [Leader Name]
+Leader: Omar Hamdy Mohamed
 
-Team Members: Shehab Hossam eldien Helmy, Omar Hamdy Mohamed, Mahmoud Waleed Mahmoud, Mohamed Mosaad Mohamed, Mohamed Essam Farouk, Mohamed Fawzy Taha
+Team Members: Shehab Hossam eldien Helmy, Mahmoud Waleed Mahmoud, Mohamed Mosaad Mohamed, Mohamed Essam Farouk, Mohamed Fawzy Taha
 
 Contacts: +20 109 151 5825, +20 102 538 2921, +20 114 021 3314, +20 114 021 3314, +20 106 446 6566, +20 114 479 2280
 
