@@ -135,19 +135,26 @@ Challenges and solutions
   ### set up project:
   
   cd E-CommerceProject
+  
   npm install    // install debendencies
+  
   npm run dev    //run project
+  
   
   ### bootstrap commands:
   
   npm install bootstrap bootstrap-icons //prombt
+  
   import 'bootstrap/dist/css/bootstrap.min.css'; //import files
+  
   import 'bootstrap-icons/font/bootstrap-icons.css'; //import files
     
   ### Router Commands:
   
    npm install react-router-dom //React Router library install
+   
    import { BrowserRouter, Routes, Route } from 'react-router-dom'; //import Router
+   
     
 
 
