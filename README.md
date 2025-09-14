@@ -117,7 +117,7 @@ Challenges and solutions
 
   ##### 1. Everyone clones the repo:
 
-  git clone https://github.com/YourUsername/MyProject.git
+  git clone https://github.com/MuhammedFawzyShoaib/E-CommerceProject.git
 
 
   ##### 2. Before editing, pull latest changes:
