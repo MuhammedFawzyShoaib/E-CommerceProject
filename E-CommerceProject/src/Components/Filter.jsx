@@ -9,7 +9,7 @@ function SearchFilterExample({ onSearch }) {
     const value = e.target.value;
     setQuery(value);
     if (onSearch) {
-        onSearch(value); // send value to parent
+      onSearch(value);
     }
   };
 

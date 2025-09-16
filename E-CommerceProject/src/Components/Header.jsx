@@ -12,11 +12,13 @@ function HeroCarousel() {
         />
         <div className="carousel-overlay"></div>
         <Carousel.Caption>
-          <h2 className="fw-bold display-4 text-warning">Discover Amazing Products</h2>
+          <h2 className="fw-bold display-4 text-warning">
+            Discover Amazing Products
+          </h2>
           <p className="lead text-light">
             Shop the latest trends and enjoy the best deals every day.
           </p>
-          <a href="#shop" className="btn bg-warning btn-lg mt-2">
+          <a href="/" className="btn bg-warning btn-lg mt-2">
             Shop Now
           </a>
         </Carousel.Caption>
@@ -34,7 +36,7 @@ function HeroCarousel() {
           <p className="lead text-light">
             Save more with exclusive discounts and offers every week.
           </p>
-          <a href="#deals" className="btn bg-warning btn-lg mt-2">
+          <a href="/" className="btn bg-warning btn-lg mt-2">
             View Deals
           </a>
         </Carousel.Caption>
@@ -48,7 +50,9 @@ function HeroCarousel() {
         />
         <div className="carousel-overlay"></div>
         <Carousel.Caption>
-          <h2 className="fw-bold display-4 text-warning">Fast & Secure Shopping</h2>
+          <h2 className="fw-bold display-4 text-warning">
+            Fast & Secure Shopping
+          </h2>
           <p className="lead text-light">
             Experience seamless checkout and quick delivery to your doorstep.
           </p>
