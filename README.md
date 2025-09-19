@@ -139,7 +139,7 @@ Challenges and solutions
   git push origin yourname
 
   
-  ### set up project:
+/*  ### set up project:
   
   cd E-CommerceProject
   
@@ -160,7 +160,7 @@ Challenges and solutions
   
    npm install react-router-dom //React Router library install
    
-   import { BrowserRouter, Routes, Route } from 'react-router-dom'; //import Router
+   import { BrowserRouter, Routes, Route } from 'react-router-dom'; //import Router*/
    
     
 
