@@ -25,7 +25,7 @@ function NavBar({ cartCount = 0 }) {
             <Nav.Link as={Link} to="/" className="px-3">
               <i className="bi bi-house text-warning"></i> Home
             </Nav.Link>
-            <Nav.Link href="#about" className="px-3">
+            <Nav.Link as={Link} to="/about" className="px-3">
               <i className="bi bi-info-circle text-warning"></i> About
             </Nav.Link>
             <Nav.Link as={Link} to="/contact" className="px-3">

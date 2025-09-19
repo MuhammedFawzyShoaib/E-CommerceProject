@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "^7.0.1",
+    "aos": "^2.3.4",
     "bootstrap": "^5.3.8",
     "bootstrap-icons": "^1.13.1",
     "mdb-react-ui-kit": "^9.0.0",

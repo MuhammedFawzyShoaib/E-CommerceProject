@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Routes,
@@ -7,6 +7,8 @@ import {
 } from "react-router-dom";
 
 import "bootstrap/dist/css/bootstrap.min.css";
+import AOS from "aos";
+import "aos/dist/aos.css";
 import "./App.css";
 import NavBar from "./Components/NavBar";
 import Header from "./Components/Header";
@@ -18,6 +20,8 @@ import Cart from "./Components/Cart";
 import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Contact from "./Components/ContactUs";
+import About from "./Components/About/About";
+
 
 function AppRoutes() {
   const location = useLocation();
@@ -59,7 +63,7 @@ function AppRoutes() {
     <>
       <NavBar cartCount={cartCount} />
       {isHome && <Header />}
-      <Filter onSearch={setSearchQuery} />
+      {isHome && <Filter onSearch={setSearchQuery} />}
       <Routes>
         <Route path="/" element={<Home query={searchQuery} />} />
         <Route
@@ -73,6 +77,7 @@ function AppRoutes() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer />
     </>
@@ -80,6 +85,9 @@ function AppRoutes() {
 }
 
 function App() {
+    useEffect(() => {
+    AOS.init({ duration: 1200, once: true });
+  }, []);
   return (
     <Router>
       <AppRoutes />

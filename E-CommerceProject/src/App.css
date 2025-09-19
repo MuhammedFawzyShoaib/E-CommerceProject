@@ -1,3 +1,10 @@
+.carousel-control-prev-icon {
+  background-image: none; 
+}
+.carousel-control-next-icon {
+  background-image: none;
+}
+
 #root {
   max-width: default;
   margin: 0;
@@ -38,4 +45,18 @@
 
 .read-the-docs {
   color: #888;
+}
+.about-page h1,
+.about-page h2 {
+  font-family: "Poppins", sans-serif;
+}
+
+.about-page p {
+  font-family: "Roboto", sans-serif;
+  color: #444;
+}
+
+.about-page img {
+  max-height: 350px;
+  object-fit: cover;
 }
