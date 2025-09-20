@@ -8,6 +8,8 @@ import {
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+
+// Components
 import NavBar from "./Components/NavBar";
 import Header from "./Components/Header";
 import Filter from "./Components/Filter";
@@ -19,12 +21,18 @@ import Login from "./Components/Login";
 import Register from "./Components/Register";
 import Contact from "./Components/ContactUs";
 
+// Dashboards
+import AdminDashboard from "./Components/AdminDashboard";
+import SellerDashboard from "./Components/SellerDashboard";
+import CustomerDashboard from "./Components/CustomerDashboard";
+
 function AppRoutes() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [searchQuery, setSearchQuery] = useState("");
   const [cartItems, setCartItems] = useState([]);
 
+  // ✅ Add to cart
   const addToCart = (item) => {
     setCartItems((prev) => {
       const idx = prev.findIndex((p) => p.id === item.id);
@@ -46,10 +54,12 @@ function AppRoutes() {
     });
   };
 
+  // ✅ Remove from cart
   const removeFromCart = (id) => {
     setCartItems((prev) => prev.filter((p) => p.id !== id));
   };
 
+  // ✅ Cart counter
   const cartCount = useMemo(
     () => cartItems.reduce((sum, p) => sum + p.quantity, 0),
     [cartItems]
@@ -60,7 +70,9 @@ function AppRoutes() {
       <NavBar cartCount={cartCount} />
       {isHome && <Header />}
       <Filter onSearch={setSearchQuery} />
+
       <Routes>
+        {/* صفحات المتجر */}
         <Route path="/" element={<Home query={searchQuery} />} />
         <Route
           path="/product/:id"
@@ -70,10 +82,21 @@ function AppRoutes() {
           path="/cart"
           element={<Cart items={cartItems} onRemoveItem={removeFromCart} />}
         />
+
+        {/* صفحات عامة */}
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/contact" element={<Contact />} />
+
+        {/* Dashboards حسب الدور */}
+        <Route path="/admin/dashboard" element={<AdminDashboard />} />
+        <Route path="/seller/dashboard" element={<SellerDashboard />} />
+        <Route
+          path="/customer/dashboard"
+          element={<CustomerDashboard onAddToCart={addToCart} />}
+        />
       </Routes>
+
       <Footer />
     </>
   );
@@ -88,3 +111,8 @@ function App() {
 }
 
 export default App;
+
+
+
+
+

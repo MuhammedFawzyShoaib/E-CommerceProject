@@ -13,21 +13,22 @@ const Login = () => {
   const [success, setSuccess] = useState("");
   const navigate = useNavigate();
 
+  // ✅ handle input change
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
     setError("");
     setSuccess("");
   };
 
+  // ✅ handle submit
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
+    // validation
     if (!formData.email || !formData.password || !formData.userType) {
-      setError(
-        "❌ All fields are required! Example: email@example.com, Password@123, Role=Customer."
-      );
+      setError("❌ All fields are required!");
       return;
     }
 
@@ -38,10 +39,10 @@ const Login = () => {
     }
 
     const passwordRegex =
-      /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&_])[A-Za-z\d@$!%?&_]{8,}$/;
+      /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%?&_])[A-Za-z\d@$!%?&_]{8,}$/;
     if (!passwordRegex.test(formData.password)) {
       setError(
-        "❌ Weak password. Correct way: At least 6 characters, include uppercase, lowercase, number, and special character and underscores. Example: Pass@123"
+        "❌ Weak password. Use at least 8 characters, include uppercase, lowercase, number, and special character. Example: Pass@123"
       );
       return;
     }
@@ -51,33 +52,35 @@ const Login = () => {
       return;
     }
 
-    // ✅ Save user
+    // ✅ save user in localStorage
     localStorage.setItem("user", JSON.stringify(formData));
 
     setSuccess(
       `🎉 Welcome ${formData.userType}! You are logged in as ${formData.email}`
     );
 
-    // ✅ Redirect after 1 second
+    // ✅ navigate according to role
     setTimeout(() => {
       if (formData.userType === "Admin") {
-        navigate("/admin/dashboard");
+        navigate("/admin/dashboard", { state: { email: formData.email } });
       } else if (formData.userType === "Seller") {
-        navigate("/seller/dashboard");
+        navigate("/seller/dashboard", { state: { email: formData.email } });
       } else {
-        navigate("/shop");
+        navigate("/customer/dashboard", { state: { email: formData.email } });
       }
     }, 1200);
 
+    // reset form
     setFormData({ email: "", password: "", userType: "" });
   };
 
   return (
     <div className="auth-container">
       <Card className="auth-card shadow-lg">
-        <h3 className="auth-title text-center">E-Commerce Login</h3>
+        <h3 className="auth-title text-center">🔐 E-Commerce Login</h3>
 
         <Form onSubmit={handleSubmit}>
+          {/* Email */}
           <Form.Group className="mb-3">
             <Form.Label>Email Address</Form.Label>
             <Form.Control
@@ -90,6 +93,7 @@ const Login = () => {
             />
           </Form.Group>
 
+          {/* Password */}
           <Form.Group className="mb-3">
             <Form.Label>Password</Form.Label>
             <Form.Control
@@ -102,6 +106,7 @@ const Login = () => {
             />
           </Form.Group>
 
+          {/* Role */}
           <Form.Group className="mb-3">
             <Form.Label>Login As</Form.Label>
             <Form.Select
@@ -117,16 +122,19 @@ const Login = () => {
             </Form.Select>
           </Form.Group>
 
+          {/* Submit Button */}
           <Button type="submit" className="w-100 btn-primary">
             Login
           </Button>
         </Form>
 
+        {/* Errors & Success */}
         <div className="mt-3">
           {error && <Alert variant="danger">{error}</Alert>}
           {success && <Alert variant="success">{success}</Alert>}
         </div>
 
+        {/* Register link */}
         <div className="text-center mt-3">
           <small>
             Don’t have an account?{" "}
@@ -141,3 +149,5 @@ const Login = () => {
 };
 
 export default Login;
+
+
