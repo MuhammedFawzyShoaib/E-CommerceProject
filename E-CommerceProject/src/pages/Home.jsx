@@ -1,8 +1,8 @@
 // pages/Home.jsx
 import { useEffect, useState } from "react";
 import { Row, Col, Spinner } from "react-bootstrap";
-import ProductCard from "../components/ProductCard";
-import PaginationBar from "../components/PaginationBar";
+import ProductCard from "../components/Home/ProductCard";
+import PaginationBar from "../components/Home/PaginationBar";
 import SearchBar from "../components/searchbar/SearchBar";
 
 const Home = () => {

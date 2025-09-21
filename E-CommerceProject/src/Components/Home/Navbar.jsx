@@ -1,19 +1,26 @@
+// components/NavBar.jsx
 import Container from "react-bootstrap/Container";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
 import NavDropdown from "react-bootstrap/NavDropdown";
 import Badge from "react-bootstrap/Badge";
 import { Link } from "react-router-dom";
+import { useCart } from "../context/CartContext";
+import { useWishlist } from "../context/WishlistContext";
 
-function NavBar({ cartCount = 0 }) {
+function NavBar() {
+  const { cart } = useCart();
+  const { wishlist } = useWishlist();
+
   return (
     <Navbar
       expand="lg"
       bg="dark"
       variant="dark"
-      className="shadow-sm sticky-top"
+      className="shadow-sm sticky-top py-3"
     >
       <Container>
+        {/* Logo */}
         <Navbar.Brand as={Link} to="/" className="fw-bold text-warning">
           <i className="bi bi-shop me-2"></i> E-Commerce
         </Navbar.Brand>
@@ -21,6 +28,7 @@ function NavBar({ cartCount = 0 }) {
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
 
         <Navbar.Collapse id="basic-navbar-nav">
+          {/* Left Side */}
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/" className="px-3">
               <i className="bi bi-house text-warning"></i> Home
@@ -31,12 +39,23 @@ function NavBar({ cartCount = 0 }) {
             <Nav.Link as={Link} to="/contact" className="px-3">
               <i className="bi bi-envelope text-warning"></i> Contact
             </Nav.Link>
-            <Nav.Link href="#wishlist" className="px-3">
+            <Nav.Link as={Link} to="/wishlist" className="px-3 position-relative">
               <i className="bi bi-heart text-warning"></i> Wishlist
+              {wishlist.length > 0 && (
+                <Badge
+                  bg="danger"
+                  pill
+                  className="ms-1 position-absolute top-0 start-100 translate-middle"
+                >
+                  {wishlist.length}
+                </Badge>
+              )}
             </Nav.Link>
           </Nav>
 
+          {/* Right Side */}
           <Nav>
+            {/* Account Dropdown */}
             <NavDropdown
               title="Account"
               id="basic-nav-dropdown"
@@ -54,11 +73,20 @@ function NavBar({ cartCount = 0 }) {
                 <i className="bi bi-speedometer2 text-warning"></i> Dashboard
               </NavDropdown.Item>
             </NavDropdown>
-            <Nav.Link as={Link} to="/cart" className="px-3">
+
+            {/* Cart */}
+            <Nav.Link as={Link} to="/cart" className="px-3 position-relative">
               <i className="bi bi-cart text-warning"></i>
-              <Badge bg="warning" text="dark" pill className="ms-1">
-                {cartCount}
-              </Badge>
+              {cart.length > 0 && (
+                <Badge
+                  bg="warning"
+                  text="dark"
+                  pill
+                  className="ms-1 position-absolute top-0 start-100 translate-middle"
+                >
+                  {cart.length}
+                </Badge>
+              )}
             </Nav.Link>
           </Nav>
         </Navbar.Collapse>

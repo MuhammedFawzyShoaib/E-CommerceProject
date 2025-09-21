@@ -83,7 +83,7 @@ const Register = () => {
       /^(?=.[a-z])(?=.[A-Z])(?=.\d)(?=.[@$!%?&_])[A-Za-z\d@$!%?&_]{8,}$/;
     if (!passwordRegex.test(formData.password)) {
       setError(
-        "Password must include uppercase, lowercase, number, and special character and underscores."
+        "❌ Weak password. Use at least 8 characters, include uppercase, lowercase, number, and special character. Example: Pass@123"
       );
       setHint("👉 Example: StrongP@ss123");
       return;

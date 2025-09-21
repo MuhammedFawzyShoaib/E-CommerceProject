@@ -1,22 +1,21 @@
+// src/components/Cart.jsx
 import React, { useMemo } from "react";
-import {
-  Container,
-  Row,
-  Col,
-  ListGroup,
-  Image,
-  Badge,
-  Button,
-} from "react-bootstrap";
+import { Container, Row, Col, ListGroup, Badge, Button } from "react-bootstrap";
+import CartItem from "./CartItem";
+import { useCart } from "../context/CartContext";
 
-function Cart({ items = [], onRemoveItem }) {
+function Cart() {
+  const { cart, removeItem, clearCart, checkout } = useCart();
   const shippingFee = 8;
 
   const { itemCount, subtotal } = useMemo(() => {
-    const count = items.reduce((sum, it) => sum + it.quantity, 0);
-    const sub = items.reduce((sum, it) => sum + it.price * it.quantity, 0);
+    const count = cart.reduce((sum, it) => sum + (it.quantity || 0), 0);
+    const sub = cart.reduce(
+      (sum, it) => sum + (it.price || 0) * (it.quantity || 0),
+      0
+    );
     return { itemCount: count, subtotal: sub };
-  }, [items]);
+  }, [cart]);
 
   const total = subtotal + (itemCount > 0 ? shippingFee : 0);
 
@@ -30,41 +29,25 @@ function Cart({ items = [], onRemoveItem }) {
               {itemCount}
             </Badge>
           </h3>
-          {items.length === 0 ? (
+          {cart.length === 0 ? (
             <p className="text-muted">Your cart is empty.</p>
           ) : (
             <ListGroup variant="flush">
-              {items.map((it) => (
-                <ListGroup.Item
-                  key={it.id}
-                  className="d-flex align-items-center gap-3"
-                >
-                  <Image
-                    src={it.thumbnail}
-                    alt={it.title}
-                    rounded
-                    style={{ width: 60, height: 60, objectFit: "cover" }}
-                  />
-                  <div className="flex-grow-1">
-                    <div className="fw-semibold">{it.title}</div>
-                    <div className="text-muted small">Qty: {it.quantity}</div>
-                  </div>
-                  <div className="ms-auto d-flex align-items-center gap-3">
-                    <div className="fw-bold">
-                      ${(it.price * it.quantity).toFixed(2)}
-                    </div>
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                      onClick={() => onRemoveItem && onRemoveItem(it.id)}
-                      title="Remove"
-                    >
-                      <i className="bi bi-trash"></i>
-                    </Button>
-                  </div>
-                </ListGroup.Item>
+              {cart.map((it) => (
+                <CartItem key={it.id} item={it} />
               ))}
             </ListGroup>
+          )}
+
+          {cart.length > 0 && (
+            <div className="d-flex gap-2 mt-3">
+              <Button variant="danger" onClick={clearCart}>
+                Clear Cart
+              </Button>
+              <Button variant="success" onClick={checkout}>
+                Checkout
+              </Button>
+            </div>
           )}
         </Col>
         <Col md={4}>

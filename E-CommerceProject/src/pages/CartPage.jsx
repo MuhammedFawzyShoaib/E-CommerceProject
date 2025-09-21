@@ -13,12 +13,12 @@ const CartPage = () => {
   );
 
   return (
-    <div className="container py-4">
-      <h2 className="mb-4">🛒 Your Cart</h2>
+    <div className="container py-4 d-flex flex-column justify-content-center">
+      <h2 className="mb-4 text-center">🛒 Your Cart</h2>
       {cart.length === 0 ? (
-        <p>Your cart is empty.</p>
+        <p className="text-center">Your cart is empty.</p>
       ) : (
-        <>
+        <div className="table-responsive mb-3">
           <Table striped bordered hover responsive>
             <thead>
               <tr className="text-center">
@@ -89,7 +89,7 @@ const CartPage = () => {
               </Button>
             </div>
           </div>
-        </>
+        </div>
       )}
     </div>
   );

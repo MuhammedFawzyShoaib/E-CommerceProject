@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Card, Button, InputGroup, FormControl } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import { useCart } from "../context/CartContext";
-import { useWishlist } from "../context/WishlistContext";
+import { useCart } from "../../context/CartContext";
+import { useWishlist } from "../../context/WishlistContext";
 
 const ProductCard = ({ product }) => {
   const { addToCart } = useCart();
