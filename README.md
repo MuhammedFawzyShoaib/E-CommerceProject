@@ -147,6 +147,4 @@ Challenges and solutions
   
   npm run dev    //run project
   
-    
-
 
