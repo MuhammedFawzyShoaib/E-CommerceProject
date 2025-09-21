@@ -9,10 +9,7 @@
   "version": "0.0.0",
   
   "type": "module",
-  "scripts": {
-  "predeploy": "npm run build",
-  "deploy": "gh-pages -d dist -r https://github.com/MuhammedFawzyShoaib/E-CommerceProject.git"
-},
+  
   "scripts": {
   
     
