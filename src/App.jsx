@@ -2,7 +2,7 @@
 import React from "react";
 import "bootstrap-icons/font/bootstrap-icons.css";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Navbar from "./components/Static/Navbar";
+import NavBar from './Components/Static/NavBar';
 import Home from "./pages/Home";
 import { WishlistProvider } from "./context/WishlistContext";
 import HeroCarousel from "./components/Home/HeroCarousel";
